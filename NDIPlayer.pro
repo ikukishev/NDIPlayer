@@ -29,18 +29,28 @@ else: win32 {
 }
 
 SOURCES += \
+    common/Config.cpp \
+    common/IPersistence.cpp \
+    common/PersistenceFactory.cpp \
     main.cpp \
     PlayerWindow/playerwindow.cpp
 
 HEADERS += \
    PlayerWindow/playerwindow.h \
    AudioPlayer/AudioPlayer.hpp \
+   common/Config.h \
+   common/Constants.h \
    common/IPersistence.hpp \
-   NDIModule/IFrame.hpp
+   NDIModule/IFrame.hpp \
+   common/PersistenceFactory.h
 
 
 # Default rules for deployment.
 unix: target.path = /opt/$${TARGET}/bin
 
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    doc/NDI_Player.drawio \
+    doc/NDI_Player.png
 
