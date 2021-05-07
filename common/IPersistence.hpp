@@ -18,7 +18,6 @@ public:
     void operator=(const IPersistence &) = delete;
 
     virtual T& get() = 0;
-    //virtual std::weak_ptr<IPersistence> setValue(const std::string& key, const std::string& value) = 0;
 
     virtual ~IPersistence() {}
 };

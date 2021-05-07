@@ -1,24 +1,23 @@
 #include "Config.h"
-#include "iostream"
 
-std::string Config::getP_ndi_address() const
+std::string Config::getLastNdiAddress() const
 {
-    return m_ndiAddress;
+    return m_lastNdiAddress;
 }
 
-void Config::setP_ndi_address(const std::string &value)
+void Config::setLastNdiAddress(const std::string &value)
 {
-    m_ndiAddress = m_setterWrapper(m_ndiAddressName, value);
+    m_lastNdiAddress = m_setterWrapper(m_lastNdiAddressName, value);
 }
 
-std::string Config::getP_ndi_name() const
+std::string Config::getLastNdiName() const
 {
-    return m_ndiName;
+    return m_lastNdiName;
 }
 
-void Config::setP_ndi_name(const std::string &value)
+void Config::setLastNdiName(const std::string &value)
 {
-    m_ndiName = m_setterWrapper(m_lastNdiNameName, value);
+    m_lastNdiName = m_setterWrapper(m_lastNdiNameName, value);
 }
 
 sf::Vector2i Config::getLastWindowPosition() const
@@ -35,7 +34,7 @@ void Config::setLastWindowPosition(const sf::Vector2i &lastWindowPosition)
 Config::Config(const std::function<const std::string &(const std::string &, const std::string &)> &setterWrapper)
     : m_setterWrapper(setterWrapper),
       m_lastNdiNameName("NDIThread.LastNDIThreadName"),
-      m_ndiAddressName("NDIThread.LastNDIThreadURL"),
+      m_lastNdiAddressName("NDIThread.LastNDIThreadURL"),
       m_lastWindowPositionXName("Window.LastWindowPositionX"),
       m_lastWindowPositionYName("Window.LastWindowPositionY")
 {
@@ -44,8 +43,8 @@ Config::Config(const std::function<const std::string &(const std::string &, cons
 
 Config &Config::parseFromPtree(boost::property_tree::ptree ptree)
 {
-    this->m_ndiAddress = ptree.get<std::string>(m_ndiAddressName);
-    this->m_ndiName = ptree.get<std::string>(m_lastNdiNameName);
+    this->m_lastNdiAddress = ptree.get<std::string>(m_lastNdiAddressName);
+    this->m_lastNdiName = ptree.get<std::string>(m_lastNdiNameName);
 
     this->m_lastWindowPosition.x = ptree.get<int>(m_lastWindowPositionXName, 0);
     this->m_lastWindowPosition.y = ptree.get<int>(m_lastWindowPositionYName, 0);
