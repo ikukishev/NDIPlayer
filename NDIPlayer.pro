@@ -30,7 +30,6 @@ else: win32 {
 
 SOURCES += \
     common/Config.cpp \
-    common/IPersistence.cpp \
     common/PersistenceFactory.cpp \
     main.cpp \
     PlayerWindow/playerwindow.cpp
@@ -40,7 +39,6 @@ HEADERS += \
    AudioPlayer/AudioPlayer.hpp \
    common/Config.h \
    common/Constants.h \
-   common/IPersistence.hpp \
    NDIModule/IFrame.hpp \
    common/PersistenceFactory.h
 
